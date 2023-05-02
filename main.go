@@ -1,23 +1,15 @@
 package main
 
 import (
-	"context"
 	"log"
 	"net"
 
-	"github.com/StasJDM/go-grpc-example/user"
+	"github.com/StasJDM/go-grpc-example/pkg/server/post"
+	"github.com/StasJDM/go-grpc-example/pkg/server/user"
+	postServer "github.com/StasJDM/go-grpc-example/server/post"
+	userServer "github.com/StasJDM/go-grpc-example/server/user"
 	"google.golang.org/grpc"
 )
-
-type UserService struct {
-	user.UnimplementedUserServer
-}
-
-func (s UserService) Register(context.Context, *user.RegisterUserRequest) (*user.RegisterUserResponse, error) {
-	return &user.RegisterUserResponse{
-		Id: "test-id-1",
-	}, nil
-}
 
 func main() {
 	listener, err := net.Listen("tcp", ":9000")
@@ -26,9 +18,11 @@ func main() {
 	}
 
 	grpcServer := grpc.NewServer()
-	userService := &UserService{}
+	userService := &userServer.UserServer{}
+	postService := &postServer.PostServer{}
 
 	user.RegisterUserServer(grpcServer, userService)
+	post.RegisterPostServer(grpcServer, postService)
 
 	if err := grpcServer.Serve(listener); err != nil {
 		log.Fatalf("Failed to serve gRPC: %v", err)

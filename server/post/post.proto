@@ -1,0 +1,15 @@
+syntax = "proto3";
+option go_package = "github.com/StasJDM/go-grpc-example/pkg/server/post";
+
+package post;
+
+service Post {
+  rpc Create(CreatePostRequest) returns (CreatePostResponse) {}
+}
+
+message CreatePostRequest {
+  string title = 1;
+  string content = 2;
+}
+
+message CreatePostResponse { string id = 1; }

@@ -1,6 +1,7 @@
 syntax = "proto3";
+option go_package = "github.com/StasJDM/go-grpc-example/pkg/server/user";
 
-option go_package = "github.com/StasJDM/go-grpc-example/user";
+package user;
 
 service User {
   rpc Register(RegisterUserRequest) returns (RegisterUserResponse) {}
