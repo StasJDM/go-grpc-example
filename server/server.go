@@ -4,9 +4,9 @@ import (
 	"log"
 	"net"
 
-	postPkg "github.com/StasJDM/go-grpc-example/pkg/server/post"
-	projectPkg "github.com/StasJDM/go-grpc-example/pkg/server/project"
-	userPkg "github.com/StasJDM/go-grpc-example/pkg/server/user"
+	postPkg "github.com/StasJDM/proto-example/pkg/xmp/server/post"
+	projectPkg "github.com/StasJDM/proto-example/pkg/xmp/server/project"
+	userPkg "github.com/StasJDM/proto-example/pkg/xmp/server/user"
 
 	"github.com/StasJDM/go-grpc-example/server/post"
 	"github.com/StasJDM/go-grpc-example/server/project"

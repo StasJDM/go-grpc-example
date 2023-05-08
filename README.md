@@ -1,7 +1,7 @@
 # Go gRPC project example
 
-## Compile specific .proto file
+## Run project
 
 ```bash
-make PROTO_FILE="path/to/file.proto" proto-generate
+go run .
 ```
